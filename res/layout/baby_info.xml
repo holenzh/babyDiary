@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical" >
+
+    <TextView 
+        android:layout_marginBottom="10dp"
+        android:text="@string/baby_info_title"
+        android:textSize="20sp"
+        android:textColor="#000000"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"/>
+    
+    <LinearLayout android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp">
+        <TextView android:gravity="center"
+            android:text="@string/baby_info_name"
+            android:textSize="20sp"
+            android:textColor="#000000"
+            android:layout_width="80dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="25dp"/>
+        <EditText
+            android:id="@+id/babyName"
+            android:layout_width="160dp"
+            android:layout_height="40dp"
+            android:inputType="textPersonName"/>
+    </LinearLayout>
+    
+    <LinearLayout android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp">
+        <TextView android:gravity="center"
+            android:text="@string/baby_info_sex"
+            android:textSize="20sp"
+            android:textColor="#000000"
+            android:layout_width="80dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="25dp"/>
+        <RadioGroup android:orientation="horizontal"
+            android:id="@+id/genderGroup"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+            <RadioButton android:text="@string/baby_info_boy"
+                android:textColor="#000000"
+                android:id="@+id/boy"/>
+            <RadioButton android:text="@string/baby_info_girl"
+                android:textColor="#000000"
+                android:id="@+id/girl"
+                android:layout_marginLeft="15dp"/>
+        </RadioGroup>
+    </LinearLayout>
+    
+    <LinearLayout android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp">
+        <TextView android:gravity="center"
+            android:text="@string/baby_info_birth"
+            android:textSize="20sp"
+            android:textColor="#000000"
+            android:layout_width="80dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="25dp"/>
+
+        <EditText
+            android:id="@+id/babyBirth"
+            android:layout_width="160dp"
+            android:layout_height="40dp"
+            android:focusable="false"
+            android:inputType="date"/>
+
+    </LinearLayout>
+    
+    <LinearLayout android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp">
+        <TextView android:gravity="center"
+            android:text="@string/baby_info_weight"
+            android:textSize="20sp"
+            android:textColor="#000000"
+            android:layout_width="80dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"/>
+        <EditText
+            android:id="@+id/babyWeight"
+            android:layout_width="160dp"
+            android:layout_height="40dp"
+            android:inputType="numberDecimal"
+            android:layout_marginLeft="15dp"/>
+        <TextView
+            android:text="@string/weight_unit"
+            android:textColor="#000000"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+    </LinearLayout>
+    
+    <LinearLayout android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp">
+        <TextView android:gravity="center"
+            android:text="@string/baby_info_height"
+            android:textSize="20sp"
+            android:textColor="#000000"
+            android:layout_width="80dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"/>
+        <EditText
+            android:id="@+id/babyHeight"
+            android:layout_width="160dp"
+            android:layout_height="40dp"
+            android:inputType="numberDecimal"
+            android:layout_marginLeft="15dp"/>
+        <TextView
+            android:text="@string/height_unit"
+            android:textColor="#000000"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+    </LinearLayout>
+    
+    <LinearLayout android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp">
+        <TextView android:gravity="center"
+            android:text="@string/baby_info_pregancy"
+            android:textSize="20sp"
+            android:textColor="#000000"
+            android:layout_width="80dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="25dp"/>
+        <EditText
+            android:id="@+id/babyPregnancy"
+            android:layout_width="160dp"
+            android:layout_height="40dp"
+            android:inputType="number"/>
+        <TextView
+            android:text="@string/pregnancy"
+            android:textColor="#000000"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+    </LinearLayout>
+    
+    <Button
+        android:text="@string/baby_info_save"
+        android:id="@+id/btnSave"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="10dp"/>
+
+</LinearLayout>
