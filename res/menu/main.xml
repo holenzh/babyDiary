@@ -3,9 +3,20 @@
     tools:context="com.holen.babygrowth.MainActivity" >
 
     <item
-        android:id="@+id/action_settings"
+        android:id="@+id/main_addBaby"
         android:orderInCategory="100"
         android:showAsAction="never"
-        android:title="@string/action_settings"/>
+        android:title="@string/main_addBaby"/>    
+    <item 
+        android:id="@+id/main_about"
+        android:orderInCategory="200"
+        android:showAsAction="never"
+        android:title="@string/main_about"/>
+    <item 
+        android:id="@+id/main_exit"
+        android:orderInCategory="300"
+        android:showAsAction="never"
+        android:title="@string/main_exit"/>
+    
 
 </menu>
