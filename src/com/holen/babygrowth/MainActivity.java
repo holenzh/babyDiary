@@ -1,27 +1,46 @@
 package com.holen.babygrowth;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+import org.joda.time.DateTime;
+import org.joda.time.Days;
+import org.joda.time.LocalDate;
+import org.joda.time.format.DateTimeFormat;
+import org.joda.time.format.DateTimeFormatter;
+
+import com.holen.babygrowth.Constant.SqlConstant;
+import com.holen.babygrowth.DB.DBHelper;
+
 import android.app.Activity;
 import android.app.ActionBar;
 import android.app.Fragment;
 import android.content.Intent;
+import android.database.Cursor;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ListView;
+import android.widget.SimpleAdapter;
 import android.widget.Toast;
 import android.os.Build;
 
 public class MainActivity extends Activity {
 	
-	private long exitTime = 0;                                          
+	private long exitTime = 0;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_main);
+		//setContentView(R.layout.activity_main);
+		showBabyList();
 
 		if (savedInstanceState == null) {
 			getFragmentManager().beginTransaction()
@@ -30,6 +49,13 @@ public class MainActivity extends Activity {
 		
 	}
 	
+	@Override
+	protected void onResume() {
+		// TODO Auto-generated method stub
+		super.onResume();
+		Log.v("holen", "我恢复了。。。");
+	}
+
 	/**
 	 * 添加菜单选项
 	 */
@@ -103,6 +129,51 @@ public class MainActivity extends Activity {
 			exitTime = System.currentTimeMillis();
 		}else{
 			finish();
+		}
+	}
+	
+	public void showBabyList(){
+		DBHelper helper = new DBHelper(this);
+		String[] columns = {"baby_name" , "gender" , "birthday"};
+		Cursor c = helper.query(false, SqlConstant.babyTableName, columns, null, null, null, null, null, null);
+		Log.v("holen", "haha" + c.getCount());
+		if (c.getCount() == 0){
+			setContentView(R.layout.fragment_main);
+		}else{
+			setContentView(R.layout.baby_list);
+			List<Map<String, String>> listItem = new ArrayList<Map<String,String>>();
+			Map<String, String> paramMap = new HashMap<String, String>();
+			if (c.moveToFirst()){
+				for (int i=0 ; i<c.getCount() ; i++){
+					c.move(i);
+					paramMap.put("name", c.getString(0));
+					paramMap.put("gender", c.getString(1));
+					
+					DateTimeFormatter format = DateTimeFormat.forPattern("yyyy-MM-dd");
+					DateTime startTime = DateTime.parse(c.getString(2), format);
+					paramMap.put("age", calcDayToNow(startTime, new DateTime()));
+					listItem.add(paramMap);
+				}
+			}
+			
+			SimpleAdapter simpleAdapter = new SimpleAdapter(this, listItem, R.layout.simple_item, 
+					new String[]{"name" , "gender" , "age"}, new int[]{R.id.showName , R.id.showGender , R.id.showAge});
+			ListView listView = (ListView)findViewById(R.id.babyList);
+			listView.setAdapter(simpleAdapter);
+		}
+	}
+	
+	public String calcDayToNow(DateTime startTime , DateTime endTime){
+		LocalDate start = new LocalDate(startTime);
+		LocalDate end = new LocalDate(endTime);
+		Days days = Days.daysBetween(start, end);
+		int intervalDays = days.getDays();
+		if (intervalDays > 365){
+			return intervalDays/365 + "周岁";
+		}else if  (intervalDays > 200){
+			return intervalDays/30 + "个月";
+		}else{
+			return intervalDays + "天";
 		}
 	}
 
