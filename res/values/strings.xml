@@ -8,7 +8,10 @@
     <string name="main_about">关于</string>
     <string name="main_exit">退出</string>
     <string name="OK">确定</string>
+    <string name="cancel">取消</string>
     <string name="toast_exit">再按一次退出程序</string>
+    <string name="toast_add">添加成功</string>
+    <string name="toast_delete">删除成功</string>
     <string name="baby_info_title">宝贝信息</string>
     <string name="baby_info_name">姓名</string>
     <string name="baby_info_sex">性别</string>
@@ -25,7 +28,20 @@
     <string name="weight_unit"> 千克</string>
     <string name="height_unit"> 厘米</string>
     <string name="pregnancy"> 周</string>
+    <string name="warn">提示</string>
     <string name="info_msg">有信息没有填写，请填写。</string>
     <string name="warn_msg">存在非法数据，请重新填写</string>
     <string name="register_msg">此用户名已经使用，请重新取名。</string>
+    <string name="delete_baby_msg">确定删除这个可爱的baby么？</string>
+    <string name="delete_all_msg">确定删除这些可爱的baby么？</string>
+    <string name="add_baby">添加baby</string>
+    <string name="look_info">查看资料</string>
+    <string name="edit_baby">编辑资料</string>
+    <string name="delete_baby">删除baby</string>
+    <string name="delete_all">删除全部</string>
+    <string name="title_activity_baby_diary">BabyDiary</string>
+    <string name="title_section1">Section 1</string>
+    <string name="title_section2">Section 2</string>
+    <string name="title_section3">Section 3</string>
+
 </resources>

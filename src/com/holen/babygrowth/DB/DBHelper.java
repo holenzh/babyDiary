@@ -48,7 +48,6 @@ public class DBHelper extends SQLiteOpenHelper {
 		}
 		Log.v("database", "开始添加数据");
 		db.insert(tableName, null, values);
-		close();
 		Log.v("database", "添加数据完成");
 	}
 	
@@ -57,7 +56,6 @@ public class DBHelper extends SQLiteOpenHelper {
 			db = getWritableDatabase();
 		}
 		db.update(tableName, values, whereClause, whereArgs);
-		close();
 	}
 	
 	@SuppressLint("NewApi")
@@ -71,12 +69,12 @@ public class DBHelper extends SQLiteOpenHelper {
 		return cursor;
 	}
 	
-	public void delete(String table , String whereClause , String[] whereArgs){
+	public int delete(String table , String whereClause , String[] whereArgs){
 		if(db == null){
 			db = getWritableDatabase();
 		}
-		db.delete(table, whereClause, whereArgs);
-		close();
+		int num = db.delete(table, whereClause, whereArgs);
+		return num;
 	}
 	
 	public void close(){
