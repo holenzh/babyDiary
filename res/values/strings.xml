@@ -12,6 +12,7 @@
     <string name="toast_exit">再按一次退出程序</string>
     <string name="toast_add">添加成功</string>
     <string name="toast_delete">删除成功</string>
+    <string name="toast_update">修改成功</string>
     <string name="baby_info_title">宝贝信息</string>
     <string name="baby_info_name">姓名</string>
     <string name="baby_info_sex">性别</string>
@@ -43,5 +44,6 @@
     <string name="title_section1">Section 1</string>
     <string name="title_section2">Section 2</string>
     <string name="title_section3">Section 3</string>
+    <string name="title_activity_baby_info">BabyInfo</string>
 
 </resources>

@@ -30,6 +30,18 @@
             android:name="com.holen.babygrowth.BabyDiary"
             android:label="@string/title_activity_baby_diary" >
         </activity>
+        
+         <activity android:name="com.holen.babygrowth.BabyInfo"
+            android:label="@string/title_activity_baby_info"
+            >
+        </activity>
+        
+          <activity android:name="com.holen.babygrowth.BabyInfoReferring"
+            android:label="@string/title_activity_baby_info"
+            >
+        </activity>
+       
     </application>
 
 </manifest>
+

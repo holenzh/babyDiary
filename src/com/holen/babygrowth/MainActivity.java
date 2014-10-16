@@ -11,11 +11,7 @@ import org.joda.time.LocalDate;
 import org.joda.time.format.DateTimeFormat;
 import org.joda.time.format.DateTimeFormatter;
 
-import com.holen.babygrowth.Constant.SqlConstant;
-import com.holen.babygrowth.DB.DBHelper;
-
 import android.app.Activity;
-import android.app.ActionBar;
 import android.app.AlertDialog;
 import android.app.AlertDialog.Builder;
 import android.app.Fragment;
@@ -34,11 +30,12 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
-import android.widget.AdapterView.OnItemLongClickListener;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
 import android.widget.Toast;
-import android.os.Build;
+
+import com.holen.babygrowth.Constant.SqlConstant;
+import com.holen.babygrowth.DB.DBHelper;
 
 public class MainActivity extends Activity {
 	
@@ -212,11 +209,16 @@ public class MainActivity extends Activity {
 		case 1:
 			Log.v("holen", "查看资料");
 			//Log.v("holen",	listItem.get((int)info.id).get("name"));
+			Intent intentToInfo = new Intent(MainActivity.this , BabyInfoReferring.class);
+			//Bundle bundle = new Bundle();
+			String name = listItem.get((int)info.id).get("name");
+			intentToInfo.putExtra("name", name);
+			startActivity(intentToInfo);
 			break;
 		case 2:
 			Log.v("holen", "添加babay");
-			Intent intent = new Intent(MainActivity.this , BabyDataEdit.class);
-			startActivity(intent);
+			Intent intentToAdd = new Intent(MainActivity.this , BabyDataEdit.class);
+			startActivity(intentToAdd);
 			break;
 		case 3:
 			Log.v("holen", "删除babay");
