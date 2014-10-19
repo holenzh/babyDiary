@@ -183,7 +183,9 @@ public class MainActivity extends Activity {
 				public void onItemClick(AdapterView<?> parent, View view,
 						int position, long id) {
 					// TODO Auto-generated method stub
-					
+					Intent intent = new Intent(MainActivity.this , BabyDiary.class);
+					intent.putExtra("babyName", listItem.get(position).get("name"));
+					startActivity(intent);
 				}
 			});
 			
@@ -252,7 +254,7 @@ public class MainActivity extends Activity {
 			
 			public void onClick(DialogInterface dialog, int which) {
 				// TODO Auto-generated method stub
-				Log.v("holen", "_whereArgs " + _whereArgs[0]);
+				//Log.v("holen", "_whereArgs " + _whereArgs[0]);
 				helper.delete(SqlConstant.babyTableName, _whereClause, _whereArgs);
 				Toast.makeText(MainActivity.this, R.string.toast_delete , Toast.LENGTH_SHORT).show();
 				showBabyList();

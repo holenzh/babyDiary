@@ -1,19 +1,17 @@
 package com.holen.babygrowth;
 
-import java.util.Locale;
+import com.holen.babygrowth.fragment.BabyCalendarFragment;
 
-import android.app.Activity;
 import android.app.ActionBar;
+import android.app.Activity;
 import android.app.Fragment;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
-import android.support.v13.app.FragmentPagerAdapter;
 import android.os.Bundle;
+import android.support.v13.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
-import android.view.Gravity;
+import android.util.Log;
 import android.view.LayoutInflater;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
@@ -22,6 +20,10 @@ public class BabyDiary extends Activity implements ActionBar.TabListener {
 
 	
 	SectionsPagerAdapter mSectionsPagerAdapter;
+	
+	private final static int TAB_BABY_CALENDAR = 0;
+	private final static int TAB_BABY_GRAPH  =1;
+	private final static int TAB_BABY_GUIDE = 2;
 
 	/**
 	 * The {@link ViewPager} that will host the section contents.
@@ -68,26 +70,6 @@ public class BabyDiary extends Activity implements ActionBar.TabListener {
 		}
 	}
 
-	@Override
-	public boolean onCreateOptionsMenu(Menu menu) {
-
-		// Inflate the menu; this adds items to the action bar if it is present.
-		getMenuInflater().inflate(R.menu.baby_diary, menu);
-		return true;
-	}
-
-	@Override
-	public boolean onOptionsItemSelected(MenuItem item) {
-		// Handle action bar item clicks here. The action bar will
-		// automatically handle clicks on the Home/Up button, so long
-		// as you specify a parent activity in AndroidManifest.xml.
-		int id = item.getItemId();
-		if (id == R.id.action_settings) {
-			return true;
-		}
-		return super.onOptionsItemSelected(item);
-	}
-
 	public void onTabSelected(ActionBar.Tab tab,
 			FragmentTransaction fragmentTransaction) {
 		// When the given tab is selected, switch to the corresponding page in
@@ -118,6 +100,12 @@ public class BabyDiary extends Activity implements ActionBar.TabListener {
 			// getItem is called to instantiate the fragment for the given page.
 			// Return a PlaceholderFragment (defined as a static inner class
 			// below).
+			switch (position) {
+			case TAB_BABY_CALENDAR:
+				return new BabyCalendarFragment();
+			default:
+				break;
+			}
 			return PlaceholderFragment.newInstance(position + 1);
 		}
 
@@ -129,14 +117,13 @@ public class BabyDiary extends Activity implements ActionBar.TabListener {
 
 		@Override
 		public CharSequence getPageTitle(int position) {
-			Locale l = Locale.getDefault();
 			switch (position) {
 			case 0:
-				return getString(R.string.title_section1).toUpperCase(l);
+				return getString(R.string.title_section1);
 			case 1:
-				return getString(R.string.title_section2).toUpperCase(l);
+				return getString(R.string.title_section2);
 			case 2:
-				return getString(R.string.title_section3).toUpperCase(l);
+				return getString(R.string.title_section3);
 			}
 			return null;
 		}
@@ -169,6 +156,16 @@ public class BabyDiary extends Activity implements ActionBar.TabListener {
 		@Override
 		public View onCreateView(LayoutInflater inflater, ViewGroup container,
 				Bundle savedInstanceState) {
+			int sectionNum = getArguments().getInt(ARG_SECTION_NUMBER);
+			/*if (sectionNum == 0){
+				Log.v("holen", "This is 1");
+			}else if (sectionNum == 1){
+				Log.v("holen", "This is 2");
+			}else if (sectionNum == 2){
+				Log.v("holen", "This is 3");
+			}*/
+			Log.v("holen", Integer.toString(sectionNum));
+			
 			View rootView = inflater.inflate(R.layout.fragment_baby_diary,
 					container, false);
 			TextView textView = (TextView) rootView

@@ -40,10 +40,9 @@
     <string name="edit_baby">编辑资料</string>
     <string name="delete_baby">删除baby</string>
     <string name="delete_all">删除全部</string>
-    <string name="title_activity_baby_diary">BabyDiary</string>
-    <string name="title_section1">Section 1</string>
-    <string name="title_section2">Section 2</string>
-    <string name="title_section3">Section 3</string>
-    <string name="title_activity_baby_info">BabyInfo</string>
+    <string name="title_section1">每日记录</string>
+    <string name="title_section2">生长曲线</string>
+    <string name="title_section3">专业指导</string>
+    <string name="title_activity_baby_info">Baby信息</string>
 
 </resources>
